@@ -6,6 +6,7 @@ public class Bouncer : MonoBehaviour
 {
     Rigidbody rb;
     bool grabbing = false;
+    Vector3 lastVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,7 @@ public class Bouncer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         rb.velocity = new Vector3(1, 0, 1);
+        rb.velocity *= 2;
     }
 
     // Update is called once per frame
@@ -23,6 +25,8 @@ public class Bouncer : MonoBehaviour
 
     void FixedUpdate()
     {
+        lastVelocity = rb.velocity;
+
         if (grabbing && !Input.GetMouseButton(0))
         {
             rb.velocity = new Vector3(1, 0, -1);
@@ -31,10 +35,19 @@ public class Bouncer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Grabbable" && Input.GetMouseButton(0))
+        var normal = collision.GetContact(0).normal;
+
+        if (collision.collider.tag == "Grabbable")
         {
-            rb.velocity = new Vector3(0, 0, 0);
-            grabbing = true;
+            if (Input.GetMouseButton(0))
+            {
+                rb.velocity = new Vector3(0, 0, 0);
+                grabbing = true;
+            }
+            else
+            {
+                rb.velocity = lastVelocity - 2 * Vector3.Dot(normal, lastVelocity) * normal;
+            }
         }
     }
 
