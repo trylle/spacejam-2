@@ -20,17 +20,29 @@ public class Bouncer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (grabbing && !Input.GetMouseButton(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            if (!Physics.Raycast(ray, out hit)) return;
+
+            Vector3 delta = hit.point - rb.position;
+
+            delta.y = 0;
+
+            rb.velocity = delta;
+
+            Debug.Log($"{hit.point} ${rb.position} ${delta}");
+            Debug.Log("release");
+
+            grabbing = false;
+        }
     }
 
     void FixedUpdate()
     {
         lastVelocity = rb.velocity;
-
-        if (grabbing && !Input.GetMouseButton(0))
-        {
-            rb.velocity = new Vector3(1, 0, -1);
-        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -43,6 +55,7 @@ public class Bouncer : MonoBehaviour
             {
                 rb.velocity = new Vector3(0, 0, 0);
                 grabbing = true;
+                Debug.Log("grabbing");
             }
             else
             {
@@ -53,6 +66,5 @@ public class Bouncer : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        grabbing = false;
     }
 }
