@@ -34,7 +34,7 @@ public class Bouncer : MonoBehaviour
 
             delta.y = 0;
 
-            playerSounds.Thud();
+            
 
             rb.velocity = delta;
 
@@ -51,6 +51,8 @@ public class Bouncer : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         var normal = collision.GetContact(0).normal;
+
+        playerSounds.Thud();
 
         if (collision.collider.tag == "Grabbable")
         {

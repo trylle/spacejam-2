@@ -1190,6 +1190,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3216333153589935219, guid: 30147ffcd34d06b408f60af7a6d553b6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8279292cce8ea0d49bd7f7de3fa0e806, type: 3}
     - target: {fileID: 7016443221178247499, guid: 30147ffcd34d06b408f60af7a6d553b6, type: 3}
       propertyPath: initialVelocity.x
       value: 3
@@ -1565,6 +1569,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009766687}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2057607831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2950933250319756575, guid: 30147ffcd34d06b408f60af7a6d553b6, type: 3}
+  m_PrefabInstance: {fileID: 1451598883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2057607832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057607831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468abaa6eabba7e43bef838986e0df1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scream: {fileID: 8300000, guid: 8279292cce8ea0d49bd7f7de3fa0e806, type: 3}
+  thud: {fileID: 8300000, guid: d0719335c6a7fbd4eb2f8ae5ab12cf08, type: 3}
+  audio: {fileID: 2057607833}
+--- !u!82 &2057607833 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3216333153589935219, guid: 30147ffcd34d06b408f60af7a6d553b6, type: 3}
+  m_PrefabInstance: {fileID: 1451598883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2058632141
 PrefabInstance:
   m_ObjectHideFlags: 0
