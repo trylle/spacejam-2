@@ -19,14 +19,8 @@ public class NPCInteraction : MonoBehaviour
         {
             Debug.Log("Collided with NPC");
             ParentMeshR.enabled = false;
-            Invoke("ReloadScene", 1f);
+            GameObject.Find("GameManager")?.GetComponent<GameManager>()?.Restart();
         }
-        
-    }
-
-    private void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 }

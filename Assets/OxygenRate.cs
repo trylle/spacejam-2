@@ -5,29 +5,20 @@ using UnityEngine.UI;
 
 public class OxygenRate : MonoBehaviour
 {
-    public float startOxygen = 1;
-    public float oxygenDropRate = 1.0f / 60.0f;
+    GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        gm = GameObject.Find("GameManager")?.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        startOxygen -= oxygenDropRate * Time.deltaTime;
-        startOxygen = Mathf.Max(0, startOxygen);
-
         var scrollbar = GetComponent<Scrollbar>();
 
         if (scrollbar)
-            scrollbar.size = 1 - startOxygen;
-
-        if (startOxygen <= 0)
-        {
-            // TODO: Game over
-        }
+            scrollbar.size = 1 - gm.oxygenLevel;
     }
 }
