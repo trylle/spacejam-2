@@ -199,6 +199,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (4)
@@ -541,6 +549,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (7)
@@ -957,7 +973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1065,6 +1081,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (5)
@@ -1335,6 +1355,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (6)
@@ -1544,6 +1572,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC

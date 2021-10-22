@@ -5,13 +5,20 @@ using UnityEngine;
 public class NPCMovementScript : MonoBehaviour
 {
     public Rigidbody rb;
+    public Vector3 startVelocity = Vector3.zero;
+    public bool randomVelocity = false;
     Vector3 lastVelocity;
     // Start is called before the first frame update
     void Start()
     {
-        float angle = Random.Range(0f, 2f * Mathf.PI);
-        Vector3 randomDir = new Vector3(Mathf.Cos(angle),0, Mathf.Sin(angle));
-        rb.velocity = randomDir * 3;
+        if (randomVelocity)
+        {
+            float angle = Random.Range(0f, 2f * Mathf.PI);
+            Vector3 randomDir = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+            rb.velocity = randomDir * 3;
+        }
+        else
+            rb.velocity = startVelocity;
 
         lastVelocity = rb.velocity;
     }
