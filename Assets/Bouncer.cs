@@ -53,6 +53,6 @@ public class Bouncer : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-
+        grabbing = false;
     }
 }
