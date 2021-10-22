@@ -7,14 +7,13 @@ public class Bouncer : MonoBehaviour
     Rigidbody rb;
     bool grabbing = false;
     Vector3 lastVelocity;
+    public Vector3 initialVelocity = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        rb.velocity = new Vector3(1, 0, 1);
-        rb.velocity *= 2;
+        rb.velocity = initialVelocity;
     }
 
     // Update is called once per frame
