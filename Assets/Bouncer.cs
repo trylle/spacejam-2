@@ -38,8 +38,6 @@ public class Bouncer : MonoBehaviour
 
             rb.velocity = delta;
 
-            Debug.Log($"{hit.point} ${rb.position} ${delta}");
-            Debug.Log("release");
 
             grabbing = false;
         }
