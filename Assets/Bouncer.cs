@@ -12,7 +12,7 @@ public class Bouncer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        rb.velocity = new Vector3(10, 0, 10);
+        rb.velocity = new Vector3(1, 0, 1);
     }
 
     // Update is called once per frame
@@ -21,9 +21,17 @@ public class Bouncer : MonoBehaviour
 
     }
 
+    void FixedUpdate()
+    {
+        if (grabbing && !Input.GetMouseButton(0))
+        {
+            rb.velocity = new Vector3(1, 0, -1);
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Wall" && Input.GetMouseButton(0))
+        if (collision.collider.tag == "Grabbable" && Input.GetMouseButton(0))
         {
             rb.velocity = new Vector3(0, 0, 0);
             grabbing = true;
