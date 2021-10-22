@@ -1761,6 +1761,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3198454986153058576, guid: 2b45fffbe1f926447998ca59590e0054, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b0ff73b3e822ded48b53febe9bf26bc1, type: 3}
+    - target: {fileID: 3198454986494603718, guid: 2b45fffbe1f926447998ca59590e0054, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 69644990327a5a842bc6ffa941162cec, type: 3}
     - target: {fileID: 3198454987503155550, guid: 2b45fffbe1f926447998ca59590e0054, type: 3}
       propertyPath: m_Name
       value: PoorMansiMuse
