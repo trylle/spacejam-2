@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 5371473986397637260}
   - component: {fileID: 5315864190281506491}
   - component: {fileID: 8003024234403900583}
+  - component: {fileID: 8275481739875009437}
   m_Layer: 5
   m_Name: O2Meter
   m_TagString: Untagged
@@ -381,6 +382,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8275481739875009437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803632820185547029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c6e2d54c09b7949b975d52f0dafe9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOxygen: 1
+  oxygenDropRate: 0.016666668
 --- !u!1 &5201569912035846398
 GameObject:
   m_ObjectHideFlags: 0
