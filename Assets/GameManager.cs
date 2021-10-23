@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         oxygenLevel -= oxygenDropRate * Time.deltaTime;
         oxygenLevel = Mathf.Max(0, oxygenLevel);
 
-        if (oxygenLevel <= 0)
+        if (oxygenLevel <= 0 || Input.GetKey("r"))
             Restart();
     }
 
