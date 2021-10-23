@@ -20,6 +20,11 @@ public class FireExtinguisher : MonoBehaviour
         StartExtinguisher();
     }
 
+    private void OnDisable()
+    {
+        StopExtinguisher();
+    }
+
     public void StartExtinguisher()
     {
         enabled = true;
