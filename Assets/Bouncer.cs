@@ -28,12 +28,12 @@ public class Bouncer : MonoBehaviour
 
         if (grabbing && !Input.GetMouseButton(0))
         {
-            RaycastHit hit;
+            float hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (!Physics.Raycast(ray, out hit)) return;
+            if (!new Plane(Vector3.up, Vector3.zero).Raycast(ray, out hit)) return;
 
-            Vector3 delta = hit.point - rb.position;
+            Vector3 delta = ray.GetPoint(hit) - rb.position;
 
             delta.y = 0;
             rb.velocity = delta;

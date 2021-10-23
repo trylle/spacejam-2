@@ -53,12 +53,12 @@ public class FireExtinguisher : MonoBehaviour
 
         playerPos = player.transform.position;
 
-        RaycastHit hit;
+        float hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (!Physics.Raycast(ray, out hit)) return;
+        if (!new Plane(Vector3.up, Vector3.zero).Raycast(ray, out hit)) return;
 
-        Vector3 direction = (playerPos - hit.point);
+        Vector3 direction = (playerPos - ray.GetPoint(hit));
 
         direction.y = 0;
         rb.AddForce(direction.normalized * Force * Time.fixedDeltaTime);
