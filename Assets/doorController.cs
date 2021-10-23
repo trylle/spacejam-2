@@ -22,5 +22,7 @@ public class doorController : MonoBehaviour
             door1.opening = false;
             door2.opening = false;
         }
+
+        GameObject.Find("GameManager")?.GetComponent<GameManager>()?.NextLevel();
     }
 }
