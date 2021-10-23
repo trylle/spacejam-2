@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameOvered) return;
+
         oxygenLevel -= oxygenDropRate * Time.deltaTime;
         oxygenLevel = Mathf.Max(0, oxygenLevel);
 
