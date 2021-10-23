@@ -37,6 +37,12 @@ public class FireExtinguisher : MonoBehaviour
         particles.Stop();
     }
 
+    void Update()
+    {
+        if (rb.velocity.magnitude > 1e-3)
+            rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, -rb.velocity.normalized);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
