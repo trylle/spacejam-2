@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public float oxygenLevel = 1;
     public float oxygenDropRate = 1.0f / 60.0f;
-    bool gameOvered = false;
+    public bool gameOvered = false;
+    public bool win = false;
 
     public string nextLevel = null;
 
@@ -31,11 +32,14 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (gameOvered || nextLevel == null) return;
+        if (gameOvered)
+            return;
 
         gameOvered = true;
+        win = true;
 
-        Invoke("NextScene", 1f);
+        if (nextLevel != null)
+            Invoke("NextScene", 1f);
     }
 
     public void Restart()

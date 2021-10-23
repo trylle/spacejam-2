@@ -31,6 +31,7 @@ public class EscapePodLaunch : MonoBehaviour
             launchTime = Time.time;
             startPosition = transform.position;
             Object.Destroy(trigger.gameObject);
+            GameObject.Find("GameManager")?.GetComponent<GameManager>()?.NextLevel();
         }
     }
 }
