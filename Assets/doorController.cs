@@ -6,6 +6,7 @@ public class doorController : MonoBehaviour
 {
     public openDoor door1;
     public openDoor door2;
+
     void OnTriggerEnter(Collider trigger)
     {
         if (trigger.tag == "Player")
@@ -22,7 +23,5 @@ public class doorController : MonoBehaviour
             door1.opening = false;
             door2.opening = false;
         }
-
-        GameObject.Find("GameManager")?.GetComponent<GameManager>()?.NextLevel();
     }
 }
