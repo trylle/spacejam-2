@@ -8,7 +8,7 @@ public class FireExtinguisher : MonoBehaviour
     GameObject player;
     Vector3 mousePos;
     Vector3 playerPos;
-    public float Force = 5f;
+    public float Force = 500f;
     public ParticleSystem particles;
     public bool operating = false;
 
@@ -37,9 +37,6 @@ public class FireExtinguisher : MonoBehaviour
 
     void Update()
     {
-        if (rb.velocity.magnitude > 1e-3)
-            rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, -rb.velocity.normalized);
-
         if (Input.GetMouseButton(0) != operating)
         {
             if (Input.GetMouseButton(0))
@@ -64,6 +61,9 @@ public class FireExtinguisher : MonoBehaviour
         Vector3 direction = (playerPos - hit.point);
 
         direction.y = 0;
-        rb.velocity = direction.normalized * Force;
+        rb.AddForce(direction.normalized * Force * Time.fixedDeltaTime);
+
+        if (rb.velocity.magnitude > 1e-3)
+            rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, -direction);
     }
 }
