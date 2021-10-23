@@ -10,14 +10,12 @@ public class FireExtinguisher : MonoBehaviour
     Vector3 playerPos;
     public float Force = 5f;
     public ParticleSystem particles;
-    public bool Enabled = false;
+    public bool operating = false;
 
     private void Start()
     {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody>();
-
-        StartExtinguisher();
     }
 
     private void OnDisable()
@@ -27,13 +25,13 @@ public class FireExtinguisher : MonoBehaviour
 
     public void StartExtinguisher()
     {
-        enabled = true;
+        operating = true;
         particles.Play();
     }
 
     public void StopExtinguisher()
     {
-        enabled = false;
+        operating = false;
         particles.Stop();
     }
 
@@ -41,22 +39,31 @@ public class FireExtinguisher : MonoBehaviour
     {
         if (rb.velocity.magnitude > 1e-3)
             rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, -rb.velocity.normalized);
+
+        if (Input.GetMouseButton(0) != operating)
+        {
+            if (Input.GetMouseButton(0))
+                StartExtinguisher();
+            else
+                StopExtinguisher();
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (enabled)
-        {
-            playerPos = player.transform.position;
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!operating) return;
 
-            if (!Physics.Raycast(ray, out hit)) return;
-            Vector3 direction = (playerPos - hit.point);
-            direction.y = 0;
-            rb.velocity = direction.normalized * Force;
-        }
+        playerPos = player.transform.position;
 
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (!Physics.Raycast(ray, out hit)) return;
+
+        Vector3 direction = (playerPos - hit.point);
+
+        direction.y = 0;
+        rb.velocity = direction.normalized * Force;
     }
 }
