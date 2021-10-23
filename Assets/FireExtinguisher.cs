@@ -16,7 +16,6 @@ public class FireExtinguisher : MonoBehaviour
     {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody>();
-        particles.Stop();
     }
 
     public void StartExtinguisher()
@@ -28,7 +27,7 @@ public class FireExtinguisher : MonoBehaviour
     public void StopExtinguisher()
     {
         enabled = false;
-        particles.Stop(); 
+        particles.Stop();
     }
 
     // Update is called once per frame
