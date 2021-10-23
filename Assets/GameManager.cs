@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public float oxygenDropRate = 1.0f / 60.0f;
     bool gameOvered = false;
 
+    public string nextLevel = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +29,11 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (gameOvered) return;
+        if (gameOvered || nextLevel == null) return;
 
         gameOvered = true;
 
-        // TODO
+        Invoke("NextScene", 1f);
     }
 
     public void Restart()
@@ -46,5 +48,10 @@ public class GameManager : MonoBehaviour
     private void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void NextScene()
+    {
+        SceneManager.LoadScene(nextLevel);
     }
 }
