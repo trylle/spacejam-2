@@ -16,6 +16,8 @@ public class FireExtinguisher : MonoBehaviour
     {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody>();
+
+        StartExtinguisher();
     }
 
     public void StartExtinguisher()
