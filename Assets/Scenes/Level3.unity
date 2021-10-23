@@ -217,6 +217,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.x
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -1279,6 +1283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (1)
@@ -1536,6 +1544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (3)
@@ -2056,6 +2068,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4913965637544553607, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
+      propertyPath: startVelocity.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2413031127475956473, guid: 58b64bf5545c64948b32f0e368db8db3, type: 3}
       propertyPath: m_Name
       value: NPC (2)
