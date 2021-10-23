@@ -1,4 +1,5 @@
-# Team 2 entry for Bouvet Game Jam 2021
+# Spacedemic
+## Team 2 entry for Bouvet Game Jam 2021
 
 * Music from bensound.com
 * Sound from freesound.org
