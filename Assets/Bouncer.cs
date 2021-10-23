@@ -23,6 +23,9 @@ public class Bouncer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rb.velocity.magnitude > 1e-3)
+            rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, rb.velocity.normalized);
+
         if (grabbing && !Input.GetMouseButton(0))
         {
             RaycastHit hit;
@@ -33,12 +36,7 @@ public class Bouncer : MonoBehaviour
             Vector3 delta = hit.point - rb.position;
 
             delta.y = 0;
-
-            
-
             rb.velocity = delta;
-
-
             grabbing = false;
         }
     }
