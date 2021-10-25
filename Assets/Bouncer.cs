@@ -24,7 +24,7 @@ public class Bouncer : MonoBehaviour
     void Update()
     {
         if (rb.velocity.magnitude > 1e-3)
-            rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, rb.velocity.normalized);
+			rb.transform.rotation = Quaternion.LookRotation(rb.velocity.normalized);
 
         if (grabbing && !Input.GetMouseButton(0))
         {

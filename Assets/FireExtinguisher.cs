@@ -64,6 +64,6 @@ public class FireExtinguisher : MonoBehaviour
         rb.AddForce(direction.normalized * Force * Time.fixedDeltaTime);
 
         if (rb.velocity.magnitude > 1e-3)
-            rb.transform.rotation = Quaternion.FromToRotation(Vector3.forward, -direction);
+            rb.transform.rotation = Quaternion.LookRotation(-direction);
     }
 }

@@ -19,6 +19,6 @@ public class AlienPodCarousel : MonoBehaviour
         const float scale = 1;
 
         gameObject.transform.position = startPosition + new Vector3(Mathf.Sin(time) * scale, 0, Mathf.Cos(time) * scale);
-        gameObject.transform.rotation = Quaternion.FromToRotation(Vector3.forward, new Vector3(-Mathf.Cos(time), 0, Mathf.Sin(time)));
+        gameObject.transform.rotation = Quaternion.LookRotation(new Vector3(-Mathf.Cos(time), 0, Mathf.Sin(time)));
     }
 }
