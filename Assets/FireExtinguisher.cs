@@ -62,6 +62,7 @@ public class FireExtinguisher : MonoBehaviour
 
         direction.y = 0;
         rb.AddForce(direction.normalized * Force * Time.fixedDeltaTime);
+        rb.angularVelocity = Vector3.zero;
 
         if (rb.velocity.magnitude > 1e-3)
             rb.transform.rotation = Quaternion.LookRotation(-direction);
