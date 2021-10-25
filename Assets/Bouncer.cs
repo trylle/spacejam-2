@@ -7,6 +7,7 @@ public class Bouncer : MonoBehaviour
     Rigidbody rb;
     bool grabbing = false;
     Vector3 lastVelocity;
+    Vector3 hitNormal;
     public Vector3 initialVelocity = Vector3.zero;
     PlayerSounds playerSounds;
     GameObject player;
@@ -23,10 +24,7 @@ public class Bouncer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rb.velocity.magnitude > 1e-3)
-			rb.transform.rotation = Quaternion.LookRotation(rb.velocity.normalized);
-
-        if (grabbing && !Input.GetMouseButton(0))
+        if (grabbing)
         {
             float hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -35,9 +33,24 @@ public class Bouncer : MonoBehaviour
 
             Vector3 delta = ray.GetPoint(hit) - rb.position;
 
-            delta.y = 0;
-            rb.velocity = delta;
-            grabbing = false;
+            if (Input.GetMouseButton(0))
+            {
+                if (Vector3.Dot(delta, hitNormal) <= 0 || delta.magnitude <= 1e-3)
+                    rb.transform.rotation = Quaternion.LookRotation(-hitNormal);
+                else
+                    rb.transform.rotation = Quaternion.LookRotation(-delta.normalized);
+            }
+            else
+            {
+                delta.y = 0;
+                rb.velocity = delta;
+                grabbing = false;
+            }
+        }
+        else
+        {
+            if (rb.velocity.magnitude > 1e-3)
+                rb.transform.rotation = Quaternion.LookRotation(rb.velocity.normalized);
         }
     }
 
@@ -56,7 +69,9 @@ public class Bouncer : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                rb.velocity = new Vector3(0, 0, 0);
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                hitNormal = normal;
                 grabbing = true;
                 Debug.Log("grabbing");
             }
