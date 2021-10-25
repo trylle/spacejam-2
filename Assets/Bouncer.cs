@@ -65,6 +65,8 @@ public class Bouncer : MonoBehaviour
 
         playerSounds.Thud();
 
+        if (!enabled) return; // This function is still called when the component is disabled (smh)
+
         if (collision.collider.tag == "Grabbable")
         {
             if (Input.GetMouseButton(0))
