@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class Tutorial : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var task = StartTutorial();
+        var task = StartTutorial(this.GetCancellationTokenOnDestroy());
     }
 
-    static async UniTask Fade(CanvasGroup cg, float targetAlpha = 1)
+    static async UniTask Fade(CanvasGroup cg, float targetAlpha = 1, CancellationToken cancellationToken = default)
     {
         float start = Time.time;
         float startAlpha = cg.alpha;
@@ -29,32 +30,32 @@ public class Tutorial : MonoBehaviour
 
             cg.alpha = Mathf.Lerp(startAlpha, targetAlpha, Mathf.Clamp01(now - start));
 
-            await UniTask.Yield(PlayerLoopTiming.Update);
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
 
             if (now - start >= 1) return;
         }
     }
 
-    async UniTaskVoid StartTutorial()
+    async UniTaskVoid StartTutorial(CancellationToken cancellationToken)
     {
-        await UniTask.Delay(1000);
-        await Fade(title);
+        await UniTask.Delay(1000, false, PlayerLoopTiming.Update, cancellationToken);
+        await Fade(title, 1, cancellationToken);
 
         for (; ; )
         {
-            await UniTask.Delay(1000);
+            await UniTask.Delay(1000, false, PlayerLoopTiming.Update, cancellationToken);
             await UniTask.WhenAll(
-                Fade(hold, 1),
-                Fade(aim, 0),
-                Fade(launch, 0)
+                Fade(hold, 1, cancellationToken),
+                Fade(aim, 0, cancellationToken),
+                Fade(launch, 0, cancellationToken)
                 );
 
             for (; !bouncer.IsGrabbing();)
             {
-                await UniTask.Yield(PlayerLoopTiming.Update);
+                await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
             }
 
-            await UniTask.WhenAll(Fade(hold, .5f), Fade(aim));
+            await UniTask.WhenAll(Fade(hold, .5f, cancellationToken), Fade(aim, 1, cancellationToken));
 
             {
                 Vector3 last = Input.mousePosition;
@@ -62,7 +63,7 @@ public class Tutorial : MonoBehaviour
 
                 for (; distance < Screen.width * .4f && bouncer.IsGrabbing();)
                 {
-                    await UniTask.Yield(PlayerLoopTiming.Update);
+                    await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
                     distance += Vector3.Distance(last, Input.mousePosition);
                     last = Input.mousePosition;
                 }
@@ -71,17 +72,17 @@ public class Tutorial : MonoBehaviour
             if (!bouncer.IsGrabbing())
                 continue; // restart tutorial
 
-            await UniTask.WhenAll(Fade(aim, .5f), Fade(launch));
+            await UniTask.WhenAll(Fade(aim, .5f, cancellationToken), Fade(launch, 1, cancellationToken));
 
             for (; bouncer.IsGrabbing();)
             {
-                await UniTask.Yield(PlayerLoopTiming.Update);
+                await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
             }
 
             await UniTask.WhenAll(
-                Fade(hold, 0),
-                Fade(aim, 0),
-                Fade(launch, 0)
+                Fade(hold, 0, cancellationToken),
+                Fade(aim, 0, cancellationToken),
+                Fade(launch, 0, cancellationToken)
                 );
         }
     }
