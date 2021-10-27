@@ -87,4 +87,9 @@ public class Bouncer : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
     }
+
+    public bool IsGrabbing()
+    {
+        return grabbing;
+    }
 }
